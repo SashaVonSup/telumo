@@ -1,5 +1,9 @@
 #include "linked_list.h"
 
+TLM_list_t TLM_list_new() {
+    return NULL;
+}
+
 TLM_list_node_t TLM_list_node_new(void *data, size_t data_size) {
     TLM_list_node_t this = malloc(sizeof(struct TLM_list_node));
     this->data = malloc(data_size);
