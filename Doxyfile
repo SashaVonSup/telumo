@@ -1,0 +1,13 @@
+# Doxyfile 1.9.1
+
+#---------------------------------------------------------------------------
+# Project related configuration options
+#---------------------------------------------------------------------------
+
+PROJECT_NAME           = "TeLuMo"
+
+PROJECT_BRIEF          = "Simple text game engine in C"
+
+OUTPUT_DIRECTORY       = "docs"
+
+INPUT                  = telumo.h linked_list.h utils.h
