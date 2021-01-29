@@ -59,6 +59,13 @@ TLM_scene_t TLM_scene_new(uint h, uint w) {
     return this;
 }
 
+void TLM_scene_free(TLM_scene_t scene) {
+    TLM_list_free(scene->entities);
+    TLM_char_map_free(scene->charMap);
+    TLM_layer_map_free(scene->layerMap);
+    free(scene);
+}
+
 void TLM_render_entity(TLM_char_map_t charMap, TLM_layer_map_t layerMap, TLM_entity_t entity) {
     uint entity_h = entity->charMap->h, entity_w = entity->charMap->w;
     chtype **scene_charMap = charMap->ptr, **entity_charMap = entity->charMap->ptr, ch;

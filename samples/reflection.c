@@ -17,6 +17,7 @@ int main() {
     TLM_char_map_t charMap = TLM_char_map_new(3, 3);
     char *s = "\0o\0/|\\/\0\\";
     charMap->ptr = TLM_string_to_chtype_table(s, 3, 3);
+    free(s);
     TLM_entity_t entity = TLM_entity_new(0, 0, 1, charMap);
     TLM_scene_add_entity(scene, entity, false);
     TLM_entity_free(entity);
@@ -40,6 +41,8 @@ int main() {
         sleep(1);
     }
 
+    TLM_char_map_free(entity->charMap);
+    TLM_scene_free(scene);
     endwin();
     return 0;
 }

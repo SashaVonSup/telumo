@@ -5,11 +5,22 @@ TLM_list_t TLM_list_new() {
     return this;
 }
 
+void TLM_list_free(TLM_list_t head) {
+    for (TLM_list_node_t node = *head; node != NULL; node = node->next)
+        TLM_list_node_free(node);
+    free(head);
+}
+
 TLM_list_node_t TLM_list_node_new(void *data, size_t data_size) {
     TLM_list_node_t this = malloc(sizeof(struct TLM_list_node));
     this->data = malloc(data_size);
     memcpy(this->data, data, data_size);
     return this;
+}
+
+void TLM_list_node_free(TLM_list_node_t node) {
+    free(node->data);
+    free(node);
 }
 
 void TLM_list_push(TLM_list_t head, void *data, size_t data_size) {

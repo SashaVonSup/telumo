@@ -45,6 +45,7 @@ typedef struct TLM_scene {
 } *TLM_scene_t;
 
 TLM_scene_t TLM_scene_new(uint h, uint w);
+void TLM_scene_free(TLM_scene_t scene);
 
 void TLM_render_entity(TLM_char_map_t charMap, TLM_layer_map_t layerMap, TLM_entity_t entity);
 void TLM_scene_add_entity(TLM_scene_t scene, TLM_entity_t entity, bool render);
