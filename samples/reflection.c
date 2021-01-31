@@ -19,9 +19,11 @@ int main() {
     charMap->ptr = TLM_string_to_chtype_table(s, 3, 3);
     free(s);
     TLM_entity_t entity = TLM_entity_new(0, 0, 1, charMap);
+    /// [ example_add_enity ]
     TLM_scene_add_entity(scene, entity, false);
     TLM_entity_free(entity);
     entity = (*scene->entities)->data;
+    /// [ example_add_entity ]
 
     initscr();
     move(0, 0);

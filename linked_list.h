@@ -13,8 +13,7 @@
 
 /// Node of list
 typedef struct TLM_list_node {
-    /// Pointer to the data to store
-    void *data;
+    void *data;  ///< Pointer to the data to store
     /// Pointer to the next node in list
     /// @details (NULL if it is the last node)
     struct TLM_list_node* next;

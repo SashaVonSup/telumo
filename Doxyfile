@@ -10,4 +10,6 @@ PROJECT_BRIEF          = "Simple text game engine in C"
 
 OUTPUT_DIRECTORY       = "docs"
 
-INPUT                  = telumo.h linked_list.h utils.h
+INPUT                  = telumo.h linked_list.h utils.h main_page.h
+
+EXAMPLE_PATH           = "samples"

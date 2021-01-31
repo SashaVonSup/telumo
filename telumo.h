@@ -16,12 +16,9 @@
 
 /// Table of characters (ncurses' chtype)
 typedef struct TLM_char_map {
-    /// Height of the char_map
-    uint h;
-    /// Width of the char_map
-    uint w;
-    /// Pointer to 2d array of chtype
-    chtype **ptr;
+    uint h;  ///< Height of the char_map
+    uint w;  ///< Width of the char_map
+    chtype **ptr;  ///< Pointer to 2d array of chtype
 } *TLM_char_map_t;
 
 /**
@@ -40,15 +37,10 @@ void TLM_char_map_free(TLM_char_map_t charMap);
 
 /// Entity (aka sprite) acting at scene
 typedef struct TLM_entity {
-    /// X coordinate of the entity's position
-    int x;
-    /// Y coordinate of the entity's position
-    int y;
-    /// Layer where the entity is located
-    /// @details Entities of higher layer are in front of entities of lower one. Set layer=0 to hide sprite.
-    uint layer;
-    /// Pointer to the char_map with the entity's image
-    TLM_char_map_t charMap;
+    int x;  ///< X coordinate of the entity's position
+    int y; ///< Y coordinate of the entity's position
+    uint layer;  ///< Layer where the entity is located
+    TLM_char_map_t charMap;  ///< Pointer to the char_map with the entity's image
 } *TLM_entity_t;
 
 /**
@@ -67,14 +59,16 @@ TLM_entity_t TLM_entity_new(int x, int y, uint layer, TLM_char_map_t charMap);
  */
 void TLM_entity_free(TLM_entity_t entity);
 
-/// Table of numbers of the top layer at each position
+/**
+ * @brief Table of numbers of the top layer at each position
+ *
+ * Entities of higher layer are in front of entities of lower one.
+ * layer=0 to hide sprite
+ */
 typedef struct TLM_layer_map {
-    /// Height of the layer_map
-    uint h;
-    /// Width of the layer_map
-    uint w;
-    /// Pointer to 2d array of layer numbers
-    uint **ptr;
+    uint h;  ///< Height of the layer_map
+    uint w;  ///< Width of the layer_map
+    uint **ptr;  ///< Pointer to 2d array of layer numbers
 } *TLM_layer_map_t;
 
 /**
@@ -91,22 +85,17 @@ TLM_layer_map_t TLM_layer_map_new(uint h, uint w);
  */
 void TLM_layer_map_free(TLM_layer_map_t layerMap);
 
-/// Scene where entities, etc. are located
+/**
+ * @brief Scene where entities, etc. are located
+ *
+ * charMap and layerMap must be h * w size
+ */
 typedef struct TLM_scene {
-    /// Height of the scene
-    uint h;
-    /// Width of the scene
-    uint w;
-    /// Pointer to linked_list of all entities at the scene
-    TLM_list_t entities;
-    /// Pointer to the char_map with the scene's image
-    /// @details It is rendered by scene_render function.
-    /// @warning It must be h * w
-    TLM_char_map_t charMap;
-    /// Pointer to the layer_map of the scene
-    /// @details It is rendered by scene_render function.
-    /// @warning It must be h * w
-    TLM_layer_map_t layerMap;
+    uint h;  ///< Height of the scene
+    uint w;  ///< Width of the scene
+    TLM_list_t entities;  ///< Pointer to linked_list of all entities at the scene
+    TLM_char_map_t charMap;  ///< Pointer to the char_map with the scene's image
+    TLM_layer_map_t layerMap;  ///< Pointer to the layer_map of the scene
 } *TLM_scene_t;
 
 /**
